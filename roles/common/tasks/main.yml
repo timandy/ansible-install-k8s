@@ -28,5 +28,4 @@
 #- name: 同步系统时间
 #  yum: name=ntpdate state=present
 #- name: 同步系统时间
-#  shell: ntpdate time.windows.com
-
+#  shell: ntpdate ntp.aliyun.com
