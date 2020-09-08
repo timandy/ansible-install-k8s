@@ -20,7 +20,7 @@
 
 - name: 移动k8s master二进制文件
   shell: cp -rf {{ tmp_dir }}/kubernetes/server/bin/{kube-apiserver,kube-controller-manager,kube-scheduler} {{ k8s_work_dir }}/bin && \
-         cp -rf {{ tmp_dir }}/kubernetes/server/bin/kubectl /usr/bin
+    cp -rf {{ tmp_dir }}/kubernetes/server/bin/kubectl /usr/bin
 
 - name: 分发k8s证书
   copy: src=k8s_cert/{{ item }} dest={{ k8s_work_dir }}/ssl
@@ -75,5 +75,5 @@
 - name: 授权APIServer访问Kubelet与授权kubelet bootstrap
   ignore_errors: yes
   shell: sleep 3 && kubectl apply -f {{ tmp_dir }}/apiserver-to-kubelet-rbac.yaml && \
-         kubectl apply -f {{ tmp_dir }}/kubelet-bootstrap-rbac.yaml
+    kubectl apply -f {{ tmp_dir }}/kubelet-bootstrap-rbac.yaml
 

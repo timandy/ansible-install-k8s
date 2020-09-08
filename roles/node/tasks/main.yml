@@ -51,7 +51,7 @@
   with_items:
     - kubelet.service.j2
     - kube-proxy.service.j2
-    
+
 - name: 启动k8s node组件
   systemd: name={{ item }} state=restarted enabled=yes daemon_reload=yes
   with_items:
@@ -63,5 +63,5 @@
 
 - name: 导入镜像
   shell: cd {{ tmp_dir }} && \
-         tar zxf image.tar.gz && \
-         for image in $(ls *.tar);do docker load < $image;done
+    tar zxf image.tar.gz && \
+    for image in $(ls *.tar);do docker load < $image;done

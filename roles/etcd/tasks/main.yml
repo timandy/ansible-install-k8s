@@ -29,7 +29,7 @@
 
 - name: 分发service文件
   template: src=etcd.service.j2 dest=/usr/lib/systemd/system/etcd.service
-    
+
 - name: 启动etcd
   systemd: name=etcd state=restarted enabled=yes daemon_reload=yes
 
@@ -38,5 +38,5 @@
 
 - name: 获取etcd集群状态
   shell: /bin/bash {{ tmp_dir }}/etcd.sh
-  register: status 
+  register: status
 - debug: var=status.stdout_lines
